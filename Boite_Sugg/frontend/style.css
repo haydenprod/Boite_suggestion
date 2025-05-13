@@ -1,0 +1,211 @@
+:root {
+    --primary-blue: #009fe3;
+  }
+  
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f1f5fb;
+    color: #333;
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  
+  /* Header avec logo et menu */
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo {
+    height: 100px;
+    width: auto;
+  }
+  
+  .app-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
+  }
+  
+  .header-nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: #003366;
+    transition: color 0.2s ease;
+  }
+  
+  .header-nav a:hover {
+    color: var(--primary-blue);
+  }
+  
+  /* Conteneur principal */
+  .container {
+    max-width: 800px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+  }
+  
+  .container:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Titres */
+  h2 {
+    color: #003366;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Formulaire */
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccd6e0;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+  }
+  
+  /* Boutons */
+  button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+  }
+  
+  button:hover {
+    background-color: #0073b1;
+  }
+  
+  /* Confirmation */
+  #confirmation {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: green;
+  }
+  
+  /* Suggestions (admin) */
+  #suggestions-list {
+    margin-top: 2rem;
+  }
+  
+  .suggestion {
+    background-color: #f9fbff;
+    border-left: 4px solid var(--primary-blue);
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+  }
+  
+  .suggestion:hover {
+    transform: translateY(-3px);
+  }
+  
+  .suggestion h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: #003366;
+  }
+  
+  .suggestion time {
+    font-size: 0.85rem;
+    color: #777;
+  }
+  
+  .suggestion p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Popup Admin */
+  #popup-admin {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 999;
+  }
+  
+  #popup-admin input {
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container {
+      padding: 1.5rem;
+    }
+  
+    .suggestion {
+      padding: 1rem;
+    }
+  
+    .logo {
+      height: 40px;
+    }
+  
+    .app-title {
+      font-size: 1.5rem;
+    }
+  
+    .header-nav a {
+      margin-left: 1rem;
+      font-size: 0.95rem;
+    }
+  }
+  

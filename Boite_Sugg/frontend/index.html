@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EchoBEM – Boîte à Suggestions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-left">
+      <img src="logo bem.png" alt="Logo BEMTECH" class="logo" />
+      <span class="app-title">EchoBEM</span>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <form id="suggestion-form">
+      <label for="nom">Nom (optionnel)</label>
+      <input type="text" id="nom" name="nom" placeholder="Laisse vide pour rester anonyme" />
+
+      <label for="message">Suggestion *</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Envoyer</button>
+      <p id="confirmation" style="display:none;">Suggestion envoyée avec succès !</p>
+    </form>
+
+    <hr>
+
+    <button onclick="ouvrirPopup()">Accès Admin</button>
+  </div>
+
+  <!-- Popup Admin -->
+  <div id="popup-admin">
+    <h3>Accès Administrateur</h3>
+    <input type="password" id="admin-key" placeholder="Entrez la clé" />
+    <br><br>
+    <button onclick="verifierCle()">Valider</button>
+    <button onclick="fermerPopup()">Annuler</button>
+  </div>
+
+  <script>
+    const CLE_ADMIN = "BDE123";
+
+    document.getElementById('suggestion-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nom = document.getElementById('nom').value;
+      const message = document.getElementById('message').value;
+
+      const response = await fetch('http://localhost:3000/suggestions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nom, message })
+      });
+
+      if (response.ok) {
+        document.getElementById('confirmation').style.display = 'block';
+        e.target.reset();
+      } else {
+        alert("Erreur lors de l'envoi.");
+      }
+    });
+
+    function ouvrirPopup() {
+      document.getElementById('popup-admin').style.display = 'block';
+    }
+
+    function fermerPopup() {
+      document.getElementById('popup-admin').style.display = 'none';
+      document.getElementById('admin-key').value = '';
+    }
+
+    function verifierCle() {
+      const valeur = document.getElementById('admin-key').value;
+      if (valeur === "BEMTECH123") {
+        window.location.href = "admin.html";
+      } else {
+        alert("Clé incorrecte !");
+        document.getElementById('admin-key').value = '';
+      }
+    }
+  </script>
+
+</body>
+</html>

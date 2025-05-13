@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EchoBEM – Suggestions Reçues</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-left">
+      <img src="logo bem.png" alt="Logo BEMTECH" class="logo" />
+      <span class="app-title">EchoBEM</span>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Suggestions reçues</h2>
+    <div id="suggestions-list">
+      <p>Chargement en cours...</p>
+    </div>
+  </div>
+
+  <script>
+    async function chargerSuggestions() {
+      try {
+        const res = await fetch('http://localhost:3000/suggestions');
+        const suggestions = await res.json();
+
+        const container = document.getElementById('suggestions-list');
+        if (!suggestions.length) {
+          container.innerHTML = "<p>Aucune suggestion pour le moment.</p>";
+          return;
+        }
+
+        container.innerHTML = suggestions.map(s => `
+          <div class="suggestion">
+            <h3>${s.nom}</h3>
+            <time>${new Date(s.date).toLocaleString()}</time>
+            <p>${s.message}</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error(err);
+        document.getElementById('suggestions-list').innerHTML = "<p>Erreur lors du chargement.</p>";
+      }
+    }
+
+    chargerSuggestions();
+  </script>
+
+</body>
+</html>
