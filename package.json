@@ -1,0 +1,16 @@
+{
+  "name": "EchoBem",
+  "version": "1.0.0",
+  "description": "Boîte à suggestions pour le BDE",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
