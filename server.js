@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -25,6 +26,8 @@ db.connect((err) => {
   }
   console.log('✅ Connecté à la base de données MySQL.');
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // POST /suggestions : Envoi d’une suggestion
 app.post('/suggestions', (req, res) => {
